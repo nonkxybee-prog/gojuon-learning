@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies # 安装项目依赖
         run: npm install --force
 
-      - name: Grant execute permission to vite # <-- 新增这一步
+      - name: Grant execute permission to vite # 添加 vite 执行权限
         run: chmod +x node_modules/.bin/vite
 
       - name: Build # 构建 React 应用
@@ -32,3 +32,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist # 指定要发布的目录是 dist
+          force_orphan: true # <-- 新增这一行，强制清空 gh-pages 分支再发布
+          
